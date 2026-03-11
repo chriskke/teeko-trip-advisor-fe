@@ -4,6 +4,7 @@ import { FeaturedSection } from "@/components/sections/FeaturedSection";
 import { EsimSection } from "@/components/sections/EsimSection";
 import { BlogSection } from "@/components/sections/BlogSection";
 import { Footer } from "@/components/layout/Footer";
+import { SectionReveal } from "@/components/shared/SectionReveal";
 import { API_BASE_URL } from "@/lib/constants";
 
 async function getRestaurants() {
@@ -51,14 +52,20 @@ export default async function Home() {
 
         {/* 1. Featured Places */}
         {restaurants.length > 0 && (
-          <FeaturedSection restaurants={restaurants.slice(0, 4)} />
+          <SectionReveal>
+            <FeaturedSection restaurants={restaurants.slice(0, 4)} />
+          </SectionReveal>
         )}
 
-        {/* 2. Our Esim Providers */}
-        <EsimSection packages={esimPackages} />
+        {/* 2. Travel SIM Packages */}
+        <SectionReveal delay={50}>
+          <EsimSection packages={esimPackages} />
+        </SectionReveal>
 
         {/* 3. Explore Blogs */}
-        <BlogSection posts={blogPosts} />
+        <SectionReveal delay={50}>
+          <BlogSection posts={blogPosts} />
+        </SectionReveal>
       </main>
       <Footer />
     </div>
